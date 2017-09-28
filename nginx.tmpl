@@ -114,7 +114,7 @@ server {
 
 {{ $host_port := split $host ":" }}
 {{ $host := when (eq (len $host_port) 2) (first $host_port) $host  }}
-{{ $sep_port := when (eq (len $host_port) 2) (last $host_port) 0  }}
+{{ $sep_port := when (eq (len $host_port) 2) (last $host_port) "0"  }}
 
 {{ $is_regexp := hasPrefix "~" $host }}
 {{ $upstream_name := when $is_regexp (sha1 $host) $host }}
