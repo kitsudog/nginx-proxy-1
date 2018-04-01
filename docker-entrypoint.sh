@@ -30,4 +30,9 @@ if [ "$socketMissing" = 1 -a "$1" = forego -a "$2" = start -a "$3" = '-r' ]; the
 	exit 1
 fi
 
+# open gzip
+sed -i 's/#gzip/gzip/' /etc/nginx/nginx.conf
+# 4096
+sed -i 's/1024;/4096;/' /etc/nginx/nginx.conf
+
 exec "$@"
