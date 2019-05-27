@@ -1,3 +1,9 @@
+{{ if $.Env.MAX_BODY_SIZE }}
+client_body_buffer_size 10m;
+client_max_body_size {{ $.Env.MAX_BODY_SIZE }};
+{{ end }}
+
+
 {{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 
 {{ define "upstream" }}
